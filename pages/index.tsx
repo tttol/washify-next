@@ -1,9 +1,14 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import scanAll from '../lib/client/ddb/scan-all'
 
 const inter = Inter({ subsets: ['latin'] })
+
+export async function getItems() {
+  const items = await scanAll();
+  return items;
+}
 
 export default function Home() {
   return (
