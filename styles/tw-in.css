@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+    :root {
+        --main-bg-color: #313030;
+        --header-border-color: #5C5C5C;
+        --card-bg-color: #4D4C4C;
+        --text-date-color: #8C8C8C;
+    }
+
+    body {
+        background-color: var(--main-bg-color);
+    }
+
+    .header-border {
+        border-bottom: solid 4px var(--header-border-color);
+    }
+
+    .badge {
+        position: absolute;
+        top: -1rem;
+        left: 44rem;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #E93F33;
+        color: white;
+        text-align: center;
+        font-size: 32px;
+        line-height: 43px;
+        font-weight: bold;
+        padding: 2px 3px;
+    }
+}
