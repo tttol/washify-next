@@ -1,10 +1,9 @@
-export default function Card(item :string) {
-    const i = JSON.parse(item)[0];
+export default function Card(item :Item) {
     return (
         <div className="w-4/5 bg-[var(--card-bg-color)] mx-auto my-10 rounded-3xl p-7 relative">
-        <p className="text-white text-4xl font-semibold">{i.name}</p>
+        <p className="text-white text-4xl font-semibold">{item.name}</p>
         <div className="flex mt-10">
-          <p className="text-[var(--text-date-color)] text-2xl">{i.created_at}</p>
+          {/* <p className="text-[var(--text-date-color)] text-2xl">{item.createdAt ? item.createdAt.toISOString() : new Date().toISOString()}</p> */}
           <div className="flex ml-auto">
             <div className="mr-5">
               <svg

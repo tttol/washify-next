@@ -1,23 +1,22 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import scanAll from "../lib/client/ddb/scan-all";
+import scanAll from "../lib/client/logic/ddb/scan-all";
 import Card from "@/component/Card";
+import { parse } from "path";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export async function getServerSideProps() {
-  const _items: any = await scanAll();
-  const items: string = JSON.stringify(_items);
-  console.debug(`items=${items}`);
-  // console.debug(`items[0]=${items[0]}`)
-  // console.debug(`items[1]=${items[1]}`)
-  // console.debug(`items[2]=${items[2]}`)
-  // console.debug(`items[3]=${items[3]}`)
+  const response: any = await scanAll();
+  const items: string = JSON.stringify(response);
   return { props: { items } };
 }
 
 export default function Home({ items }: { items: string }) {
+  // console.debug(items);
+  const parsedItems: Array<Item> = JSON.parse(items);
+  console.debug(parsedItems);
   return (
     <>
       <Head>
@@ -27,7 +26,7 @@ export default function Home({ items }: { items: string }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Card item={items}></Card>
+        {parsedItems.map(e => Card(e))}
       </main>
     </>
   );
